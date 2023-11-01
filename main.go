@@ -1,7 +1,17 @@
-package TexasHoldem
+package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+func PlayerServer(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "20")
+
+}
 
 func main() {
-	fmt.Println("Hello - Texas Holdem Project")
+	handler := http.HandlerFunc(PlayerServer)
+	log.Fatal(http.ListenAndServe(":8000", handler))
 }
